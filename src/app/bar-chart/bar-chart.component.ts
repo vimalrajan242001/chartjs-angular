@@ -6,20 +6,22 @@ import * as chart from 'chart.js';
     styleUrls: ['./bar-chart.component.scss'],
 })
 export class BarChartComponent implements OnInit {
-    @Input() public jsonData:any;
+    @Input() public jsonData: any;
+    @Input() public chartType: String;
     private label: any;
     private datas: any;
+    public canvasName = 'mybarChart'
     constructor() { }
     ngOnInit(): void {
-        this.createChart();
+        this.createChart(this.chartType);
     }
 
-    createChart() {
+    createChart(type) {
         this.label = Object.keys(this.jsonData.data)
         this.datas = Object.values(this.jsonData.data)
         console.log(...this.label)
-        const myChart = new chart('myChart', {
-            type: "bar",
+        const myChart = new chart('mybarChart', {
+            type: type,
             data: {
                 labels: [...this.label],
                 datasets: [
