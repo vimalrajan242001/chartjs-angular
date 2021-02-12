@@ -19,7 +19,18 @@ export class BarChartComponent implements OnInit {
     createChart(type) {
         this.label = Object.keys(this.jsonData.data)
         this.datas = Object.values(this.jsonData.data)
-        console.log(...this.label)
+        var length = this.datas.length
+        var color = []
+        var dynamicColors = function (i, total) {
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+            return "rgb(" + r + "," + g + "," + b + ")";
+        };
+        for(var i in this.datas){
+            color.push(dynamicColors(i,length))
+        }
+        // console.log(...this.label)
         const myChart = new chart('mybarChart', {
             type: type,
             data: {
@@ -28,7 +39,7 @@ export class BarChartComponent implements OnInit {
                     {
                         label: this.jsonData.description.title,
                         data: [...this.datas],
-                        backgroundColor: "rgba(51,255,102,0.7)",
+                        backgroundColor: color,
                         borderColor: "rgba(51,51,51,0.7)",
                         borderWidth: 1,
                     },

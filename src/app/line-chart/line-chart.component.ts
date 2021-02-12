@@ -37,6 +37,7 @@ export class LineChartComponent implements OnInit {
       },
       options: {
         responsive: true,
+        
         scales: {
           xAxes: [
             {

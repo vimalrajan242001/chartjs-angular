@@ -152,7 +152,6 @@ export class AppComponent {
       "2016": "1.00"
     }
   }
-  public barCanvas="myBarChart"
   public barChart = "bar"
   public lineChart = "line"
   title = 'chartjs-angular';
